@@ -11,8 +11,9 @@ console.log('to be install')
 function install(Vue, opts = {}) {
     console.log('run intsall')
     // Don't install more than once
-    if (installed)
+    if (installed) {
         return
+    }
     installed = true
 
     // Vue.component('VueCoolBoxSelector', VueCoolBoxSelector)
@@ -22,7 +23,6 @@ function install(Vue, opts = {}) {
     // Object.entries(components).forEach(([componentName, component]) => {
     //     Vue.component(`${defaults.componentPrefix}${componentName}`, component);
     // });
-
 
     const componentFiles = import.meta.globEager(['./components/toranj/*.global.vue',
 
@@ -65,18 +65,18 @@ const plugin = {
 
 // Use automatically when global Vue instance detected (CDN / Vue 2) Maybe with import Vue from 'vue (??)
 let GlobalVue = null
-if (typeof window !== 'undefined')
+if (typeof window !== 'undefined') {
     GlobalVue = window.Vue
-else if (typeof global !== 'undefined')
+} else if (typeof global !== 'undefined') {
     GlobalVue = global.Vue
+}
 
-if (GlobalVue)
+if (GlobalVue) {
     GlobalVue.use(plugin)
-
+}
 
 // Allow component use individually
 // export * from './components';
-
 
 export {toranj}
 // Default export is library as a whole, registered via Vue.use()

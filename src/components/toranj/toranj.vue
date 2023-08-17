@@ -4,13 +4,150 @@ import blockMixin from './blockMixin'
 // import 'quill/dist/quill.bubble.css'
 
 const defaultWidgets = [
-    {title: 'Text', block: { component: 'html-tag', html: ' ' }, icon: 'ion:text'},
-    {title: 'Image', block: { component: 'image', src: '' }, icon: 'bx:bx-image'},
-    {title: 'Button', block: { component: 'button', text: 'Text', type: 'btn' }, icon: 'dashicons:button'}, //BTN List? in row? or both
-    {title: 'Small Row', block: { component: 'micro-row', children: [{ component: 'button', text: 'Text', type: 'btn' }]} , icon: 'dashicons:button'},
-  {title: 'Custom Code', block: { component: 'code', html: '' }, icon: 'ion:code-slash'},
+  {
+    title: 'Text',
+    block: {
+      component: 'html-tag',
+      html: ' ',
+    },
+    icon: 'ion:text',
+  },
+  {
+    title: 'Image',
+    block: {
+      component: 'image',
+      src: '',
+    },
+    icon: 'bx:bx-image',
+  },
+  {
+    title: 'Button',
+    block: {
+      component: 'button',
+      text: 'Text',
+      type: 'btn',
+    },
+    icon: 'dashicons:button',
+  }, // BTN List? in row? or both
+  {
+    title: 'Small Row',
+    block: {
+      component: 'micro-row',
+      children: [{
+        component: 'button',
+        text: 'Text',
+        type: 'btn',
+      }],
+    },
+    icon: 'dashicons:button',
+  },
+  {
+    title: 'Custom Code',
+    block: {
+      component: 'code',
+      html: '',
+    },
+    icon: 'ion:code-slash',
+  },
 
 //    other map, embed, form video, newsletter, more box, blockquote, text effects, etc.
+]
+
+const defaultSections = [
+  // { component: 'menu', logo: [] },
+
+  {
+    title: 'jumbo',
+    block: { component: 'jumbo' },
+    tags: [],
+  },
+
+  {
+    title: 'cover',
+    block: { component: 'cover' },
+    tags: [],
+  },
+  {
+    title: 'feature',
+    block: { component: 'feature' },
+    tags: [],
+  },
+  {
+    title: 'feature 2',
+    block: {
+      component: 'feature',
+      reverse: true,
+    },
+    tags: [],
+  },
+  {
+    title: 'main',
+    block: {
+      component: 'main',
+      boxed: true,
+      boxColor: '#fff',
+    },
+    tags: [],
+  },
+  {
+    title: 'brands',
+    block: { component: 'brands' },
+    tags: [],
+  },
+  {
+    title: 'cards',
+    block: { component: 'cards' },
+    tags: [],
+  },
+  {
+    title: 'Newsletter',
+    block: { component: 'newsletter' },
+    tags: [],
+  },
+  // // ////  {component: 'newsbar'},
+  {
+    title: 'Team',
+    block: { component: 'team' },
+    tags: [],
+  },
+  {
+    title: 'Cards 2',
+    block: {
+      component: 'cards',
+      boxed: true,
+      boxColor: '#fff',
+    },
+    tags: [],
+  },
+  {
+    title: 'Pricing',
+    block: {
+      component: 'pricing',
+      boxed: true,
+      boxColor: '#fff',
+      cols: 3,
+      specialPlan: 2,
+    },
+    tags: [],
+  },
+  {
+    title: 'Contact',
+    block: { component: 'contact' },
+    tags: [],
+  },
+  {
+    title: 'Form Section',
+    block: { component: 'form-section' },
+    tags: [],
+  },
+  {
+    title: 'Footeer',
+    block: { component: 'footer' },
+    tags: [],
+  },
+  // { component: 'footer', mini: true },
+  // ///  // { component: 'invoice-section' }, //new-edeet
+
 ]
 
 export default {
@@ -29,33 +166,11 @@ export default {
   props: ['value'],
   data() {
     return {
-      addListOptions: {edit: true},
+      addListOptions: { edit: true },
       render: false,
       key: 0,
 
-
-      addList: [
-        // { component: 'menu', logo: [] },
-        {component: 'jumbo'},
-
-        {component: 'cover'},
-        {component: 'feature'},
-        {component: 'feature', reverse: true},
-        {component: 'main', boxed: true, boxColor: '#fff'},
-        {component: 'brands'},
-        {component: 'cards'},
-        {component: 'newsletter'},
-        // // ////  {component: 'newsbar'},
-        {component: 'team'},
-        {component: 'cards', boxed: true, boxColor: '#fff'},
-        {component: 'pricing', boxed: true, boxColor: '#fff', cols: 3, specialPlan: 2},
-        {component: 'contact'},
-        {component: 'form-section'},
-        {component: 'footer'},
-        // { component: 'footer', mini: true },
-        // ///  // { component: 'invoice-section' }, //new-edeet
-
-      ],
+      addList: [],
       addListUnchanged: [],
       asyncComponentsGallery: [],
       undoStack: [],
@@ -88,18 +203,26 @@ export default {
     },
   },
   created() {
-    this.addListUnchanged = JSON.parse(JSON.stringify(this.addList)) // used tto generate new IDs
-    this.shownAddModal() // load in loading page (because of static prop in modal)
+
   },
   mounted() {
     // make modals draggable
-    if (!Array.isArray(this.options.widgets) || !this.options.widgets.length){
+    if (!Array.isArray(this.options.widgets) || !this.options.widgets.length) {
       // this.$set= this.options.widgets
       this.options.widgets = defaultWidgets
-
     }
+
+    if (!Array.isArray(this.options.sections) || !this.options.sections.length) {
+      // this.$set= this.options.widgets
+      this.options.sections = defaultSections
+    }
+
+    this.addList = this.options.sections
+    this.addListUnchanged = JSON.parse(JSON.stringify(this.addList)) // used to generate new IDs
+    this.shownAddModal() // load in loading page (because of static prop in modal)
+
     this.$root.$on('bv::modal::shown', (bvEvent, modalId) => {
-      dragElement(document.getElementById(modalId + '___BV_modal_content_'))
+      dragElement(document.getElementById(`${modalId}___BV_modal_content_`))
     })
   },
   methods: {
@@ -133,8 +256,9 @@ export default {
 
       this.key++ // not the best way to update the layout works for now (better emit update whever it was changed)
 
-      if (this.undoIndex + 1 < this.undoStack.length)
+      if (this.undoIndex + 1 < this.undoStack.length) {
         this.undoIndex++
+      }
       // this.$set('layout', this.layout )
     },
     redo() {
@@ -156,9 +280,13 @@ export default {
         if (Array.isArray(res.data) && res.data.length) {
           res.data.forEach((post) => {
             this.asyncComponentsGallery.push({
-              component: 'asyncComponent',
-              postId: post.id,
-              post,
+              title: post.title,
+              block: {
+                component: 'asyncComponent',
+                postId: post.id,
+                post,
+              },
+              tags: post.tags,
             })
           })
 
@@ -174,6 +302,7 @@ export default {
       const index = this.layout.length // add next to current compo or at the end
       this.$root.addSectionIndex = index
       this.$root.addSectionParentArray = this.layout
+      this.$root.showAddSection = true
 
       this.$root.$emit('bv::show::modal', 'add-section')
     },
@@ -181,8 +310,8 @@ export default {
       const clone = JSON.parse(JSON.stringify(block))
       clone.id = `${clone.component}-${this.$helper.randomNumber(1, 999)}`
 
-      console.log('clone', clone)
-      console.log('section index', this.$root.addSectionIndex)
+      // console.log('clone', clone)
+      // console.log('section index', this.$root.addSectionIndex)
       this.$root.addSectionParentArray.splice(this.$root.addSectionIndex, 0, clone)
       this.$root.$emit('bv::hide::modal', 'add-section')
 
@@ -207,16 +336,20 @@ export default {
 }
 
 function dragElement(el) {
-  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
-  if (!el || !el.classList.contains('modal-draggable')) {
+  let pos1 = 0
+  let pos2 = 0
+  let pos3 = 0
+  let pos4 = 0
+  if (!el || !el.classList.contains('modal-draggable'))
     return
-  }
-  let header = el.getElementsByClassName('modal-header')
+
+  const header = el.getElementsByClassName('modal-header')
 
   if (header.length) {
     // if present, the header is where you move the DIV from:
     header[0].onmousedown = dragMouseDown
-  } else {
+  }
+  else {
     // otherwise, move the DIV from anywhere inside the DIV:
     el.onmousedown = dragMouseDown
   }
@@ -241,8 +374,8 @@ function dragElement(el) {
     pos3 = e.clientX
     pos4 = e.clientY
     // set the element's new position:
-    el.style.top = (el.offsetTop - pos2) + 'px'
-    el.style.left = (el.offsetLeft - pos1) + 'px'
+    el.style.top = `${el.offsetTop - pos2}px`
+    el.style.left = `${el.offsetLeft - pos1}px`
   }
 
   function closeDragElement() {
@@ -265,28 +398,28 @@ function dragElement(el) {
 
     <!--        {{ undoStack }} -->
     <draggable
-        v-if="layout && layout.length"
-        :key="key"
-        v-model="block"
-        group="row"
-        :disabled="!options.edit"
-        handle=".row-drag-handler"
-        ghost-class="drop-placeholder"
-        draggable=".toranj-section"
+      v-if="layout && layout.length"
+      :key="key"
+      v-model="block"
+      group="row"
+      :disabled="!options.edit"
+      handle=".row-drag-handler"
+      ghost-class="drop-placeholder"
+      draggable=".toranj-section"
     >
       <!--            <div slot="header">add</div> -->
 
       <component
-          :is="getComponent(block)"
-          v-for="(block, index) in layout"
-          :key="block.id"
-          :parent="layout"
-          :block="block"
-          :model="model"
-          :scope="scope"
-          :class="`toranj-section toranj-${block.component} ${block.classes00 || ''}`"
-          :index="index"
-          :options="options"
+        :is="getComponent(block)"
+        v-for="(block, index) in layout"
+        :key="block.id"
+        :parent="layout"
+        :block="block"
+        :model="model"
+        :scope="scope"
+        :class="`toranj-section toranj-${block.component} ${block.classes00 || ''}`"
+        :index="index"
+        :options="options"
       />
     </draggable>
 
@@ -296,10 +429,10 @@ function dragElement(el) {
           Click below to add your first block to the page.
         </div>
         <button
-            class="btn btn btn-success"
-            @click.prevent="openAddSection"
+          class="btn btn btn-success"
+          @click.prevent="openAddSection"
         >
-          <span class="iconify big" data-icon="dashicons:plus-alt2" data-inline="true"/>
+          <span class="iconify big" data-icon="dashicons:plus-alt2" data-inline="true" />
           Add Block
         </button>
       </div>
@@ -309,11 +442,94 @@ function dragElement(el) {
       </div>
     </div>
 
+<!--    <b-sidebar-->
+<!--        v-if="options.edit" id="add-section" title="" :hide-header="false"-->
+<!--        :hide-footer="true"-->
+<!--        size="sm"-->
+<!--        backdrop-->
+<!--        backdrop-variant=""-->
+<!--        width="500px"-->
+<!--        left-->
+<!--        shadow-->
+<!--        lazy-->
+<!--        sidebar-class="p-2"-->
+<!--        body-class="dsht p-2"-->
+<!--    >-->
+<!--      <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--        <small>Choose block to add:</small>-->
+
+<!--        <b-btn class="cursor-hand" size="sm" @click.prevent="AddSection({ component: 'asyncComponent' })">-->
+<!--          <span class="iconify" data-icon="ion:code-slash" data-inline="true" /> Template Block-->
+<!--        </b-btn>-->
+
+<!--        <b-btn class="cursor-hand" size="sm" @click.prevent="AddSection({ component: 'code-section' })">-->
+<!--          <span class="iconify" data-icon="ion:code-slash" data-inline="true" /> Custom Code-->
+<!--        </b-btn>-->
+<!--      </div>-->
+
+<!--      <div class="row toranj-add-section">-->
+<!--        <div v-if="addList && addList.length && render" class="col-md-12">-->
+<!--          &lt;!&ndash;            <div slot="header">add</div> &ndash;&gt;-->
+<!--          &lt;!&ndash;                    v-b-tooltip.viewport.hover.ds750="'Add Block Here'" &ndash;&gt;-->
+<!--          <div-->
+<!--              v-for="(section, index) in addList" :key="index"-->
+<!--              class="mb-3"-->
+<!--              style="position: relative;zoom:0.6"-->
+<!--          >-->
+<!--            &lt;!&ndash;                        @click.stop.capture="AddSection(addListUnchanged[index])" &ndash;&gt;-->
+<!--            &lt;!&ndash;                        {{addListUnchanged[index]}} &ndash;&gt;-->
+<!--            &lt;!&ndash;                        {{block}} &ndash;&gt;-->
+<!--            <div-->
+<!--                class="toranj-add-section-overlay d-flex justify-content-center align-content-center"-->
+<!--                @click.stop.capture="AddSection(addListUnchanged[index].block)"-->
+<!--            >-->
+<!--              <div class="bigger">-->
+<!--                <span class="iconify big" data-icon="dashicons:plus-alt2" data-inline="true" />-->
+<!--                <strong>Click to Add</strong>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <component-->
+<!--                :is="getComponent(section.block)"-->
+
+<!--                :key="section.block.id"-->
+<!--                :parent="[]"-->
+<!--                :block="section.block"-->
+<!--                :model="model"-->
+<!--                :scope="scope"-->
+<!--                :class="`toranj-section toranj-${section.block.component} ${section.block.classes00 || ''}`"-->
+<!--                :index="index"-->
+<!--                :options="addListOptions"-->
+<!--            />-->
+<!--            &lt;!&ndash;            <component &ndash;&gt;-->
+<!--            &lt;!&ndash;              :is="getComponent(block)" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :key="block.id" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :parent="addList" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :block="block" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :model="model" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :scope="scope" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :class="`toranj-section toranj-${block.component} ${block.classes00 || ''}`" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :index="index" &ndash;&gt;-->
+<!--            &lt;!&ndash;              :options="addListOptions" &ndash;&gt;-->
+<!--            &lt;!&ndash;            /> &ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;                <div class="col-md-6"> &ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="cursor-hand" &ndash;&gt;-->
+<!--        &lt;!&ndash;                         @click.prevent="AddSection({component: 'cards', boxed: false, boxColor: '#fff', cols: 2})"> &ndash;&gt;-->
+<!--        &lt;!&ndash;                        <span class="iconify h4" data-icon="mdi:page-layout-header-footer" data-inline="false"></span> &ndash;&gt;-->
+<!--        &lt;!&ndash;                        2 Cols &ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div> &ndash;&gt;-->
+<!--        &lt;!&ndash;                </div> &ndash;&gt;-->
+<!--      </div>-->
+<!--    </b-sidebar>-->
+
     <b-modal
-        v-if="options.edit" id="add-section" static title="" :hide-header="false" :hide-footer="true" size="md"
-        hide-backdrop
-        scrollable content-class="modal-draggable"
-        modal-class="dsht no-animation"
+      v-if="options.edit" id="add-section" static title="" :hide-header="false" :hide-footer="true" size="md"
+      hide-backdrop
+      scrollable content-class="modal-draggable"
+      modal-class="dsht no-animation"
     >
       <!--            @shown="shownAddModal" -->
 
@@ -321,11 +537,11 @@ function dragElement(el) {
         <small>Choose block to add:</small>
 
         <b-btn class="cursor-hand" size="sm" @click.prevent="AddSection({ component: 'asyncComponent' })">
-          <span class="iconify" data-icon="ion:code-slash" data-inline="true"/> Template Block
+          <span class="iconify" data-icon="ion:code-slash" data-inline="true" /> Template Block
         </b-btn>
 
         <b-btn class="cursor-hand" size="sm" @click.prevent="AddSection({ component: 'code-section' })">
-          <span class="iconify" data-icon="ion:code-slash" data-inline="true"/> Custom Code
+          <span class="iconify" data-icon="ion:code-slash" data-inline="true" /> Custom Code
         </b-btn>
       </div>
 
@@ -334,34 +550,34 @@ function dragElement(el) {
           <!--            <div slot="header">add</div> -->
           <!--                    v-b-tooltip.viewport.hover.ds750="'Add Block Here'" -->
           <div
-              v-for="(block, index) in addList" :key="index"
-              class="mb-3"
-              style="position: relative;zoom:0.6"
+            v-for="(section, index) in addList" :key="index"
+            class="mb-3"
+            style="position: relative;zoom:0.6"
           >
             <!--                        @click.stop.capture="AddSection(addListUnchanged[index])" -->
             <!--                        {{addListUnchanged[index]}} -->
             <!--                        {{block}} -->
             <div
-                class="toranj-add-section-overlay d-flex justify-content-center align-content-center"
-                @click.stop.capture="AddSection(addListUnchanged[index])"
+              class="toranj-add-section-overlay d-flex justify-content-center align-content-center"
+              @click.stop.capture="AddSection(addListUnchanged[index].block)"
             >
               <div class="bigger">
-                <span class="iconify big" data-icon="dashicons:plus-alt2" data-inline="true"/>
+                <span class="iconify big" data-icon="dashicons:plus-alt2" data-inline="true" />
                 <strong>Click to Add</strong>
               </div>
             </div>
 
             <component
-                :is="getComponent(block)"
+              :is="getComponent(section.block)"
 
-                :key="block.id"
-                :parent="addList"
-                :block="block"
-                :model="model"
-                :scope="scope"
-                :class="`toranj-section toranj-${block.component} ${block.classes00 || ''}`"
-                :index="index"
-                :options="addListOptions"
+              :key="section.block.id"
+              :parent="[]"
+              :block="section.block"
+              :model="model"
+              :scope="scope"
+              :class="`toranj-section toranj-${section.block.component} ${section.block.classes00 || ''}`"
+              :index="index"
+              :options="addListOptions"
             />
             <!--            <component -->
             <!--              :is="getComponent(block)" -->

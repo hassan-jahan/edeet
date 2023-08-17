@@ -90,7 +90,7 @@ export default {
     getParentArray() {
       if (this.parent && this.parent.children && this.parent.children.length) {
         return this.parent.children
-        console.log('children from parent')
+        // console.log('children from parent')
       }
       else if (Array.isArray(this.parent)) {
         return this.parent

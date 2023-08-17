@@ -243,7 +243,7 @@ export default {
           <b-list-group flash style="max-height: 180px;min-width: 180px;overflow-y: scroll;">
             <b-list-group-item
                 v-for="(widget, index) in options.widgets"
-                v-key="index"
+                v-key="widget.title"
                 v-b-tooltip.hover.right.viewport.html.ds500="'Add it to the page'" href="#" class="px-3"
                 @click="Add(widget.block)"
             >
