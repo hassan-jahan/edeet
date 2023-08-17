@@ -1,0 +1,35 @@
+.modal-dialog {
+    transform: scale(0.75);
+    transition: transform 0.1s;
+}
+
+.modal.fade .modal-dialog {
+
+    transition: transform 0.1s;
+    /*// you can also use opacity for fade or set top for location change*/
+}
+
+/*//Add .no-animation to modal-class*/
+.no-animation .modal-dialog, .no-animation.modal.fade .modal-dialog{
+    transform: scale(1) !important;
+    transition: none !important;
+}
+
+.modal.fade.show .modal-dialog {
+
+    -webkit-transform: scale(1) !important;
+    -moz-transform: scale(1) !important;
+    -ms-transform: scale(1) !important;
+    transform: scale(1) !important;
+}
+
+.modal-dialog {
+    margin: 100px auto; //better center
+}
+
+/*//more css effects https://github.com/washaweb/bootstrap-modal-transition/blob/master/bs_modal_transition.css*/
+
+
+.p-0-popover .popover-body {
+    padding: 0;
+}

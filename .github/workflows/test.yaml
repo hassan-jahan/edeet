@@ -1,0 +1,50 @@
+name: Test
+
+# from https://github.com/fluent-vue/fluent-vue/blob/main/.github/workflows/test.yml
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+env:
+  CI: true
+
+jobs:
+  test:
+    name: 'Test on Node.js ${{ matrix.node }} OS: ${{ matrix.os }} Vue: ${{matrix.vue}}'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [16, 18]
+        vue: [2, 3]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: ${{ matrix.node }}
+
+      #      - uses: pnpm/action-setup@v2.2.4
+      #        with:
+      #          version: 8.x.x
+      #          run_install: true
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm run test
+
+      - name: Upload code coverage
+        uses: codecov/codecov-action@v3
+        with:
+          flags: vue
+#          flags: vue-${{matrix.vue}}

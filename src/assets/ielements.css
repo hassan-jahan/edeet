@@ -1,0 +1,478 @@
+//.show > .dropdown-menu {
+//  -webkit-transform: scale(1, 1);
+//  transform: scale(1, 1);
+//}
+//
+//.dropdown-menu {
+//  -webkit-transform-origin: top; // top right make it more material
+//  transform-origin: top;
+//  -webkit-animation-fill-mode: forwards;
+//  animation-fill-mode: forwards;
+//  -webkit-transform: scale(1, 0);
+//  display: block;
+//  transition: all 0.2s; //ease-out slower
+//  -webkit-transition: all 0.2s;
+//}
+//
+//.dropup .dropdown-menu {
+//  -webkit-transform-origin: bottom;
+//  transform-origin: bottom;
+//}
+//
+//.dropup > .dropdown-menu:after {
+//  border-bottom: 0;
+//  border-top: 6px solid rgba(39, 45, 51, 0.9);
+//  top: auto;
+//  display: inline-block;
+//  bottom: -6px;
+//  content: '';
+//  position: absolute;
+//  left: 50%;
+//  border-right: 6px solid transparent;
+//  border-left: 6px solid transparent;
+//}
+
+
+textarea:focus, textarea.form-control, input.form-control, input[type=text], input[type=password], input[type=email], input[type=number], [type=text].form-control, [type=password].form-control, [type=email].form-control, [type=tel].form-control, [contenteditable].form-control {
+    padding-left: .25rem;
+    padding-right: .3rem;
+}
+
+textarea:focus, textarea.form-control:focus, input.form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus {
+    background: #ebfaff;
+}
+
+
+.nav-link.active {
+    border-bottom: 2px solid $primary;
+}
+
+.bg-dark .nav-link.active {
+    border-bottom: 3px solid $warning;
+    //background: #666
+}
+
+
+.transparent, .bg-transparent {
+    border: none;
+    background-color: transparent !important;
+    box-shadow: none;
+}
+
+.badge-outline {
+    background: transparent !important;
+}
+
+.badge-outline.badge-dark {
+    color: $gray-400;
+    border: 1px solid $gray-400;
+}
+
+.badge-outline.badge-primary {
+    color: $primary;
+    border: 1px solid $primary;
+}
+
+.badge-outline.badge-info {
+    color: $info;
+    border: 1px solid $info;
+}
+
+.badge-outline.badge-warning {
+    color: $warning;
+    border: 1px solid $warning;
+}
+
+.badge-outline.badge-danger {
+    color: $danger;
+    border: 1px solid $danger;
+}
+
+.badge-outline.badge-success {
+    color: $success;
+    border: 1px solid $success;
+}
+
+.image-select.active {
+    border: 2px solid $primary;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 16px;
+    height: 32px;
+    font-size: 15px;
+    line-height: 32px;
+    border-radius: 16px;
+    background-color: #f1f1f1;
+}
+
+.chip img {
+    float: left;
+    margin: 0 10px 0 -16px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+.iclose {
+    padding-left: 2px;
+    color: #888;
+    //font-weight: bold;
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+
+    line-height: 28px;
+}
+
+.iclose:hover {
+    color: #333;
+}
+
+
+.row-eq-height > [class^=col] {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-eq-height > [class^=col]:last-of-type div {
+    margin: 10px;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:first-of-type {
+    margin-top: 0;
+}
+
+.row-eq-height > [class^=col]:last-of-type div:last-of-type {
+    margin-bottom: 0;
+}
+
+//.bs-make-rtl .container, .bs-make-rtl .fluid-container, .bs-make-rtl .modal{
+//    direction: rtl;
+//    text-align: right;
+//}
+
+/* just add to body (also  TEST: [dir=rtl] / [dir=rtl] body) or main (if you don't want rtl for modal popups, etc) then ltr when you dont't need */
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+
+.rtl .navbar-nav {
+    padding-right: 0;
+}
+
+// TEST: [dir=rtl]
+[dir=rtl] .float-right, .rtl .float-right {
+    float: left !important;
+}
+
+.rtl .float-left {
+    float: right !important;
+}
+
+/* not sure to change text-left or right or use  text-align: start and end */
+.rtl .text-left {
+    text-align: right !important;
+}
+
+.rtl .text-right {
+    text-align: left !important;
+}
+
+.rtl .mr-auto {
+    margin-left: auto !important;
+    margin-right: initial !important;
+}
+
+.rtl .ml-auto {
+    margin-right: auto !important;
+    margin-left: initial !important;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+}
+
+.ltr .ml-auto {
+    margin-left: auto !important;
+    margin-right: initial !important;
+}
+
+.ltr .mr-auto {
+    margin-right: auto !important;
+    margin-left: initial !important;
+}
+
+.ltr .text-left {
+    text-align: left !important;
+}
+
+.ltr .text-right {
+    text-align: right !important;
+}
+
+
+////Fix animation lag on .navbar-collapse
+//.navbar-collapse.show{
+//  padding:0 !important;
+//}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-tabs {
+    .vertical.nav-link,
+    .vertical.nav-link:focus {
+        box-shadow: none;
+        border-bottom: 1px solid #ddd !important;
+
+        &:hover {
+            background-color: transparent;
+            box-shadow: inset 3px 0 0 $primary !important; //hassan -2 > -3
+            color: $primary;
+        }
+    }
+
+    .vertical.nav-link.active,
+    .vertical.nav-link.active:focus {
+        border-bottom: 1px solid #eee !important;
+        box-shadow: inset 3px 0 0 $primary !important; //hassan -2 > -3
+    }
+}
+
+
+.rounded-2 {
+    border-radius: 0.5rem !important;
+}
+
+.rounded-3 {
+    border-radius: 1rem !important;
+}
+
+.rounded-4 {
+    border-radius: 1.5rem !important;
+}
+
+.input-group-text {
+    padding: 0;
+    box-shadow: inset 0 -1px 0 #ddd;
+}
+
+a.text-muted:hover {
+    color: var(--primary) !important;
+}
+
+.cursor-hand {
+    cursor: pointer;
+}
+
+.btn-xs {
+    padding: 0.2rem 0.2rem;
+    font-size: 0.85rem;
+    line-height: 1;
+    border-radius: 0;
+    transition: 0.1s;
+}
+
+.btn-xs:hover {
+    border-color: transparent !important;
+}
+
+.btn-xs:focus {
+    box-shadow: 0 0 0 0.1rem rgba(203, 206, 208, 0.2) !important;
+}
+
+.modal-header .close {
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.btn-circle-sm {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0;
+    border-radius: 50%;
+}
+
+
+
+.big {
+    font-size: 120%;
+}
+
+.bigger {
+    font-size: 140%;
+}
+
+.modal-draggable .modal-header {
+    cursor: move;
+}
+
+.modal-with-tabs .modal-header {
+    border-bottom: none;
+}
+
+.modal-with-tabs .modal-header .close {
+    z-index: 500;
+}
+
+.modal-sm .modal-header, .modal-sm .modal-footer {
+    padding: 0.75rem;
+}
+
+//temporary fix swtich label
+.custom-switch .custom-control-label::before, .custom-switch .custom-control-label::after {
+    left: -2.6rem;
+}
+
+.custom-switch .custom-control-label {
+    //font-size: larger;
+}
+
+.__nuxt-error-page .logo {
+    display: none;
+}
+
+//Hide Dropdown carets for buttons
+//caret-width in scss is also require
+
+.btn.dropdown-toggle::after,
+.btn.dropdown-toggle::before {
+    display: none;
+}
+//dropup caret
+
+.dropup > .dropdown-menu:after {
+    display: none;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+
+
+/*Menu icon to close*/
+.fancy-close {
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 0px;
+    /*margin: 15% auto;*/
+    -webkit-transition: all .3s ease, -webkit-transform .2s ease;
+    transition: all .3s ease, transform .2s ease;
+    background: -webkit-linear-gradient(top, transparent 0%, transparent 20%, #2E313C 20%, #2E313C 23%, transparent 23%, transparent 48%, #2E313C 48%, #2E313C 50%, transparent 47%, transparent 76%, #2E313C 76%, #2E313C 78%, transparent 78%), -webkit-linear-gradient(transparent, transparent);
+    background: linear-gradient(to bottom, transparent 0%, transparent 20%, #2E313C 20%, #2E313C 23%, transparent 23%, transparent 48%, #2E313C 48%, #2E313C 50%, transparent 47%, transparent 76%, #2E313C 76%, #2E313C 78%, transparent 78%), linear-gradient(transparent, transparent);
+}
+
+.fancy-close:active, .fancy-close:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.fancy-close.clicked {
+    background: -webkit-linear-gradient(135deg, transparent 0%, transparent 48%, #2E313C 49%, #2E313C 51%, transparent 51%, transparent 100%), -webkit-linear-gradient(45deg, transparent 0%, transparent 48%, #2E313C 49%, #2E313C 51%, transparent 51%, transparent 100%);
+    background: linear-gradient(-45deg, transparent 0%, transparent 48%, #2E313C 49%, #2E313C 51%, transparent 51%, transparent 100%), linear-gradient(45deg, transparent 0%, transparent 48%, #2E313C 49%, #2E313C 51%, transparent 51%, transparent 100%);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.fancy-close.clicked:active, .fancy-close.clicked:hover {
+    -webkit-transform: scale(1.1) rotate(180deg);
+    -ms-transform: scale(1.1) rotate(180deg);
+    transform: scale(1.1) rotate(180deg);
+}
+
+
+
+.hover-zoom{
+    -webkit-transition: all .2s ease, -webkit-transform .2s ease;
+    transition: all .2s ease
+}
+.hover-zoom:active, .hover-zoom:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.hover-shadow, .hover-up{
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover{
+    box-shadow: 0 14px 16px rgba(0,0,0,.1);
+}
+
+
+ .hover-up{top:0;}
+
+.hover-up:hover{
+    //transform: translate3d(0,-5px,0); case z-index issue for cards
+    top:-5px;
+}
+
+.hover-opacity:hover{
+    opacity: 0.7;
+}
+
+.hover-reverse-opacity{
+    opacity: 0.7;
+}
+
+.hover-reverse-opacity:hover{
+    opacity: 1;
+}
+
+.no-animation{
+    transition: none !important;
+}
+
+.store-newline{
+    white-space: pre-line;
+}
+
+.no-border-bottom-radius{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.simple-checkmark {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 12px;
+    width: 6px;
+    //margin-left: 60%;
+    margin: 0 4px;
+    border-bottom: 3px solid #78b13f;
+    border-right: 3px solid #78b13f;
+    transition: opacity .5s ease-out ;
+}

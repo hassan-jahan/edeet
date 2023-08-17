@@ -1,0 +1,53 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup volta
+        uses: volta-cli/action@v3
+        with:
+          registry-url: https://registry.npmjs.org/
+
+      #      - name: Install pnpm
+      #        uses: pnpm/action-setup@v2
+      #        with:
+      #          version: 8
+      #          run_install: false
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      #          cache: pnpm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate a new github release
+        run: npx conventional-github-releaser -p angular
+        continue-on-error: true
+        env:
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+      - name: Build package
+        run: npm run build
+
+      - name: Publish package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

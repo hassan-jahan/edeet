@@ -1,0 +1,342 @@
+/* Toranj */
+
+
+.dasht-body {
+    /*color: #005dff;*/
+    font-family: var(--dasht-main-font);
+    font-family: var(--dasht-main-font);
+    background: var(--dasht-body-bg);
+    color: var(--dasht-body-color);
+}
+
+/* fix oerriding css by external css (best way to use a prefixed and also change bootrstrap vue js to use new class but even better is somehow bring controls out of frame! )*/
+.dsht-controls *, {
+    font-family: sans-serif;
+}
+
+/*//Testing: Test: to avoid conflict with other css / we enter what does not included in main bootstrap but revert what by third parties.*/
+.dsht .btn:not(.btn-circle-sm), .dsht-controls .btn:not(.btn-circle-sm) {
+    width: unset;
+    height: unset;
+    /*//all: unset;*/
+}
+
+/*//copy from computed*/
+.dsht .btn, .dsht-conntrols .btn {
+    align-items: flex-start;
+    appearance: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    /*//background-color: rgb(233, 236, 239);*/
+    /*//background-image: linear-gradient(rgb(234, 236, 238), rgb(233, 236, 239));*/
+    background-origin: padding-box;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+    background-size: auto;
+    /*//border-bottom-color: rgb(233, 236, 239);*/
+    /*//border-bottom-left-radius: 0px;*/
+    /*//border-bottom-right-radius: 0px;*/
+    /*//border-bottom-style: solid;*/
+    /*//border-bottom-width: 1px;*/
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    /*//border-left-color: rgb(233, 236, 239);*/
+    /*//border-left-style: solid;*/
+    /*//border-left-width: 1px;*/
+    /*//border-right-color: rgb(233, 236, 239);*/
+    /*//border-right-style: solid;*/
+    /*//border-right-width: 1px;*/
+    /*//border-top-color: rgb(233, 236, 239);*/
+    /*//border-top-left-radius: 0px;*/
+    /*//border-top-right-radius: 0px;*/
+    /*//border-top-style: solid;*/
+    /*//border-top-width: 1px;*/
+    box-sizing: border-box;
+    /*//color: rgb(33, 33, 33);*/
+    cursor: pointer;
+    /*//display: block;*/
+    /*//flex-basis: auto;*/
+    /*//flex-grow: 1;*/
+    /*//flex-shrink: 1;*/
+    font-family: sans-serif;
+    /*//font-size: 13.6px;*/
+    /*//font-stretch: 100%;*/
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    /*//height: 24.6875px;*/
+    letter-spacing: 0.1px;
+    /*//line-height: 13.6px;*/
+    /*//margin-bottom: 0px;*/
+    /*//margin-left: 2px;*/
+    /*//margin-right: 2px;*/
+    /*//margin-top: 0px;*/
+    overflow-x: visible;
+    overflow-y: visible;
+    /*//padding-bottom: 3.2px;*/
+    /*//padding-left: 3.2px;*/
+    /*//padding-right: 3.2px;*/
+    /*//padding-top: 3.2px;*/
+    /*//position: relative;*/
+    text-align: center;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    /*//text-transform: uppercase;*/
+    transition-delay: 0s;
+    transition-duration: 0.1s;
+    transition-property: all;
+    transition-timing-function: ease;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    /*//width: 24.6875px;*/
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+    z-index: 101;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-border-image: none;
+}
+
+.dasht-body h1, .dasht-body h2, .dasht-body h3, {
+    /*color: #005dff;*/
+    font-family: var(--dasht-heading-font);
+}
+
+.drop-placeholder {
+    background: #ccc !important;
+    border: 1px dashed #22354a !important;
+    /*visibility: hidden;*/
+
+    /*width: 100%;*/
+    /*//min-height: 10px !important;*/
+    /*//width: 100% !important;;*/
+}
+
+.sortable-chosen {
+    background: #a39d9d;
+}
+
+.sortable-drag {
+    background: #628043;
+}
+
+.toranj-selected-widget {
+    border: 2px dashed #ccc;
+}
+
+.toranj-hover-widget {
+    border: 1px dashed #ccc;
+}
+
+.toranj-selected-field {
+    border: 2px dashed #ccc;
+}
+
+.toranj-hover-field {
+    /*//background: #ccc; doeesn't work*/
+}
+
+.toranj-add-section .footer-add {
+    display: none;
+}
+
+.toranj-add-section-overlay {
+    z-index: 2050;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    outline: 0;
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+}
+
+.toranj-add-section-overlay:hover {
+    border: 2px solid #666;
+    background: #fff;
+    opacity: .5;
+}
+
+.toranj-add-section-overlay div {
+    display: none;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.toranj-add-section-overlay:hover div {
+    display: flex;
+}
+
+.toranj-view {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+/*.hover-row {*/
+/*box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;*/
+/*box-shadow:inset 0 0 5px;*/
+/*box-shadow: 0 0 0 3px rgba(66,153,225,.5);*/
+/*}*/
+
+/*//.ql-align-center {*/
+/*//    text-align: center;*/
+/*//}*/
+/*//*/
+/*//.ql-tooltip {*/
+/*//    z-index: 10000;*/
+/*//}*/
+
+/*.col-drag-handler, .row-drag-handler {*/
+
+/*}*/
+
+/*.toranj-menu-row {*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    !*top: 20px; bugggy with drag*!*/
+/*    padding-right: 15px;*/
+/*    padding-top: 5px;*/
+/*    z-index: 100000;*/
+/*}*/
+
+/*.toranj-menu-column {*/
+/*    position: absolute;*/
+/*    left: 20px;*/
+/*    top: -25px;*/
+/*    padding-right: 15px;*/
+/*    z-index: 100000;*/
+/*}*/
+
+/*.toranj-menu-widget-left-outside {*/
+/*    position: absolute;*/
+/*    left: -32px;*/
+/*    top: 0;*/
+/*    z-index: 500;*/
+/*    height: 100%;*/
+/*    padding: 0 4px;*/
+/*    !*margin-left: -25px;*!*/
+/*    !*top: 20px; bugggy with drag*!*/
+/*    !*padding-right: 15px;*!*/
+/*    !*padding-top: 5px;*!*/
+/*    !*z-index: 100;*!*/
+/*}*/
+
+/*.toranj-menu-widget-right-outside {*/
+/*    position: absolute;*/
+/*    right: -32px;*/
+/*    top: 0;*/
+/*    z-index: 500;*/
+/*    height: 100%;*/
+/*    padding: 0 4px;*/
+/*    !*margin-left: -25px;*!*/
+/*    !*top: 20px; bugggy with drag*!*/
+/*    !*padding-right: 15px;*!*/
+/*    !*padding-top: 5px;*!*/
+/*    !*z-index: 100;*!*/
+/*}*/
+
+
+
+/*Section*/
+.toranj-section {
+    /*require for parent to use  absolute in children */
+    position: relative;
+    /*require to make z-index work after drug */
+    transform: none !important;
+    min-height: 40px;
+}
+
+.toranj-section .hover-section {
+    box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
+    /*box-shadow:inset 0 0 5px;*/
+    /*box-shadow: 0 0 0 3px rgba(66,153,225,.5);*/
+}
+
+.toranj-menu-section {
+    position: absolute;
+    top: 0;
+    padding-left: 14px;
+    padding-left: 14px;
+//z-index: 550;  /* not sure about result */
+
+}
+
+/* workds correctly, no need to add dropdown */
+.toranj-menu-section .btn, .toranj-menu-section .dropdown {
+    position: relative;
+    /*z-index: 101; not sure why*/
+    z-index: 550;
+    margin: 0 2px;
+    /*    or z-index: 500*/
+}
+
+.toranj-menu-section.top-outside {
+    right: 0;
+    top: -40px;
+    padding-right: 4px;
+    padding-bottom: 8px;
+}
+
+.toranj-menu-section.right-inside {
+    right: 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.toranj-menu-section.left-inside {
+    left: 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+/* Footer add */
+.toranj-section .footer-add {
+    position: absolute;
+//left: 0;
+//width: 100%;
+    left: 25%;
+    width: 50%;
+    /*width: 80%; !*  left to make space for buttons and avoid z-index problem with drop down for empty code block *!*/
+    bottom: -10px;
+    height: 20px;
+    padding-top: 8px;
+    z-index: 500;
+
+}
+
+.toranj-section .footer-add-body {
+    height: 10px;
+    position: relative;
+}
+
+.toranj-section .border-div {
+    border-bottom: 3px dashed #c1c1c1;
+    height: 3px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.toranj-section .footer-add .btn {
+    margin-top: -25px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+
+
+
+
