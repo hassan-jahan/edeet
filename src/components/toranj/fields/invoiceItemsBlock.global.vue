@@ -145,7 +145,7 @@ export default {
         taxRate: (!this.block.defaultTaxRate && this.block.defaultTaxRate !== 0) ? 20 : this.block.defaultTaxRate,
         discountRate: this.block.defaultDiscountRate || 0,
       }
-      console.warn('if dooone', this.value)
+      // console.warn('if dooone', this.value)
     }// testing to enable object value work without certain defination slug means its kind of form element (another way to do this is doing it only for that specific component that needs object value)
   },
   methods: {

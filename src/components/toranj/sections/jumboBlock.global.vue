@@ -18,6 +18,11 @@ export default {
           //     'description': 'Transparent',
           // },
           {
+            slug: '_style',
+            label: 'Style',
+            component: 'style',
+          },
+          {
             slug: 'bgImg',
             label: 'Background Image',
             component: 'upload',

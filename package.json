@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@iconify/iconify": "^1.0",
+    "@styn/plugin-breakpoints": "^0.1.1",
     "bcx-expression-evaluator": "^1.2.1",
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "2.22",

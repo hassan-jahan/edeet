@@ -66,7 +66,7 @@ export default {
     return {
       selected: 'Item2',
       theApp: {},
-      formOptions: { edit: true },
+      formOptions: { edit: false },
       pageOptions: { edit: true, sections: [], widgets: [] },
       layout: [],
       model: {},
@@ -74,6 +74,11 @@ export default {
       fields: {
         component: 'form',
         children: [
+          {
+            slug: '_style',
+            label: 'Style Builder',
+            component: 'style',
+          },
           {
             slug: 'settings.description',
             label: 'SEO Description',
@@ -160,6 +165,7 @@ export default {
       <pre class="ltr bg-dark text-white p-3">{{ layout }}</pre>
       </small>
     </div>
+
     <div style="max-width:500px;margin:30px;">
       {{ theApp }}
       <input v-model="formOptions.edit" type="checkbox">
