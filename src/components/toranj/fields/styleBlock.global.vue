@@ -34,7 +34,7 @@ export default {
       settingsForm: {},
       temp: {},
       unit: 'px',
-      test: '33',
+      test: '',
     }
   },
   computed: {

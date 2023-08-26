@@ -97,6 +97,7 @@ export default {
     />
 
     <template #append>
+<!--      better unit props -->
       <dropdown-selector
           v-model="tempUnit" class="float-right" size="xs" variant="dark" right :options="units" @input="updateValue"
       />

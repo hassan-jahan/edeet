@@ -13,29 +13,12 @@ export default {
       tempOptions: {},
     }
   },
+  computed: {
+
+  },
   watch: {
     value(newVal) {
-      console.log('drop down value changed', newVal)
-      // if (newVal) {
-      const current = this.$helper.findOneObjectInArray(this.tempOptions, 'value', newVal)
-      console.log('2drop down value changed', newVal)
-
-      // console.log('mounted tiwth value' , this.value)
-
-      if (current && current.value) {
-        this.$set(this.selected, 'value', current.value)
-        this.$set(this.selected, 'text', current.text)
-        this.$set(this.selected, 'html', current.html)
-        // console.log('mounted tiwth value' , this.selected)
-      } else {
-        this.$set(this.selected, 'value', '')
-        this.$set(this.selected, 'text', '')
-
-      }
-      // }
-      // else {
-      //   this.changeTo(null, ' ')
-      // }
+      this.initial(newVal)
     },
   },
   created() {
@@ -56,9 +39,29 @@ export default {
     }
   },
   mounted() {
-
+    this.initial(this.value)
   },
   methods: {
+    initial(newVal) {
+      if (newVal || newVal === '') {
+        console.log('drop down value changed', newVal)
+        // if (newVal) {
+        const current = this.$helper.findOneObjectInArray(this.tempOptions, 'value', newVal)
+        console.log('2drop down value changed', newVal)
+
+        // console.log('mounted tiwth value' , this.value)
+
+        if (current && current.value) {
+          this.$set(this.selected, 'value', current.value)
+          this.$set(this.selected, 'text', current.text)
+          this.$set(this.selected, 'html', current.html)
+          // console.log('mounted tiwth value' , this.selected)
+        } else {
+          this.$set(this.selected, 'value', '')
+          this.$set(this.selected, 'text', '')
+        }
+      }
+    },
     changeTo(value, text = '', html = '') {
       // this.selected = {
       //   value,
@@ -71,6 +74,7 @@ export default {
 
       this.$emit('input', this.selected.value)
     },
+
   },
 }
 </script>
