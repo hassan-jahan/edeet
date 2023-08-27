@@ -37,14 +37,11 @@ export default {
     this.initial(this.value)
   },
   created() {
-    console.log('asdsada', this.custom, this.units)
     if (this.custom && Array.isArray(this.units)) {
-      console.log('asdsada11')
       this.units.push({
         value: '',
         text: '✎',
       })
-      console.log(this.units)
     }
   },
   methods: {
@@ -104,9 +101,9 @@ export default {
     />
 
     <template #append>
-      <dropdown-selector
-          v-model="tempUnit" class="float-right" size="xs" variant="dark" right :options="units" @input="updateValue"
-      />
+<!--      <dropdown-selector-->
+<!--          v-model="tempUnit" class="float-right" size="xs" variant="dark" right :options="units" @input="updateValue"-->
+<!--      />-->
 
       <b-form-select
           v-model="tempUnit" :options="units" size="sm"
