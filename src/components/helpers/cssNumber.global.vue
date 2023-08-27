@@ -1,8 +1,24 @@
 <script>
 export default {
-  name: 'cssNumber.global.vue',
+  name: 'CssNumber',
   // mixins: [fieldMixin],
-  props: ['value', 'units', 'size'],
+  props: {
+    value: {
+      type: String,
+    },
+    units: {
+      type: Array,
+      default: () => {
+        return ['px', '%', 'em', 'rem', 'vw', {
+          value: '',
+          text: '✎',
+        },]
+      }, // outside
+    },
+    size: {
+      type: String,
+    },
+  },
   data() {
     return {
       tempValue: '',
@@ -10,48 +26,40 @@ export default {
       customValue: '',
     }
   },
+  computed: {},
   watch: {
 
     // value(newVal) {
     //
     // },
   },
-  computed: {},
   mounted() {
     this.initial(this.value)
   },
   created() {
-    // console.log('ghiddd', this.value)
-    // if (this.value) {
-    //   this.tempUnit = this.value.toString().match(/[a-zA-Z]+/)
-    //   if (Array.isArray(this.tempUnit)) {
-    //     this.tempUnit = this.tempUnit[0]
-    //   }
-    //   this.tempValue = this.value.toString().match(/[0-9]+/)
-    //   if (Array.isArray(this.tempValue)) {
-    //     this.tempValue = this.tempValue[0]
-    //   }
-    //
-    //   if (!this.tempValue && this.tempUnit){
-    //     this.tempValue = this.tempUnit
-    //     this.tempUnit = ''
-    //   }
-    //
-    // }
+    console.log('asdsada', this.custom, this.units)
+    if (this.custom && Array.isArray(this.units)) {
+      console.log('asdsada11')
+      this.units.push({
+        value: '',
+        text: '✎',
+      })
+      console.log(this.units)
+    }
   },
   methods: {
     initial(newVal) {
       // console.log('newVal nit', newVal)
       if (newVal || newVal === 0) {
         const unitPart = newVal.toString().match(/[a-zA-Z]+/)
-        console.log('unitPart', unitPart, this.units)
+        // console.log('unitPart', unitPart, this.units)
         if (Array.isArray(unitPart)) {
-          console.log('unit part is array')
+          // console.log('unit part is array')
           if (this.units.includes(unitPart[0])) {
-            console.log('includes')
+            // console.log('includes')
             this.tempUnit = unitPart[0]
             const numPart = newVal.toString().match(/[0-9]+/)
-            console.log('numPart', numPart)
+            // console.log('numPart', numPart)
             if (Array.isArray(numPart)) {
               this.tempValue = numPart[0]
               // this.tempUnit = 'px'
@@ -59,7 +67,6 @@ export default {
               this.tempUnit = ''// customValue
               this.customValue = newVal
             }
-
           } else { // no defined unit
             this.tempUnit = ''
             this.customValue = newVal
@@ -70,7 +77,6 @@ export default {
         }
         this.updateValue()
       }
-
     },
     updateValue(newVal = '') {
       if (this.tempUnit === '') {
@@ -79,6 +85,7 @@ export default {
         this.$emit('input', this.tempValue.toString() + this.tempUnit)
       }
     }
+    ,
   }
   ,
 }
@@ -88,7 +95,7 @@ export default {
   <b-input-group :size="size" v-bind="$attrs" class="">
     <b-form-input
         v-if="tempUnit"
-        v-model="tempValue" type="number" size="sm" @input="updateValue" step="any"
+        v-model="tempValue" type="number" size="sm" step="any" @input="updateValue"
     />
 
     <b-form-input
@@ -97,18 +104,15 @@ export default {
     />
 
     <template #append>
-<!--      better unit props -->
       <dropdown-selector
           v-model="tempUnit" class="float-right" size="xs" variant="dark" right :options="units" @input="updateValue"
       />
 
-      <!--      @change="(val) => newFilter.field = $helper.findOneObjectInArray(type.postFields, 'slug', val)"-->
       <b-form-select
           v-model="tempUnit" :options="units" size="sm"
           class="cssNumberSelector"
           @input="updateValue"
       />
-
     </template>
   </b-input-group>
 </template>

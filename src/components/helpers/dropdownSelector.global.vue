@@ -13,9 +13,7 @@ export default {
       tempOptions: {},
     }
   },
-  computed: {
-
-  },
+  computed: {},
   watch: {
     value(newVal) {
       this.initial(newVal)
@@ -26,17 +24,18 @@ export default {
       return
     }
 
-    if (this.options[0] && !this.options[0].value) {
-      this.tempOptions = []
-      this.options.forEach((val) => {
+    this.tempOptions = []
+    this.options.forEach((item, i) => {
+      // console.log('val', item)
+      if (item && !item.value && item.value !== '') {
         this.tempOptions.push({
-          text: val,
-          value: val,
+          text: item,
+          value: item,
         })
-      })
-    } else {
-      this.tempOptions = this.options
-    }
+      } else {
+        this.tempOptions.push(item)
+      }
+    })
   },
   mounted() {
     this.initial(this.value)
@@ -44,14 +43,14 @@ export default {
   methods: {
     initial(newVal) {
       if (newVal || newVal === '') {
-        console.log('drop down value changed', newVal)
+        // console.log('drop down value changed', newVal)
         // if (newVal) {
         const current = this.$helper.findOneObjectInArray(this.tempOptions, 'value', newVal)
-        console.log('2drop down value changed', newVal)
+        // console.log('2drop down value changed', newVal)
 
-        // console.log('mounted tiwth value' , this.value)
+        // console.log('m current lue', current, this.value)
 
-        if (current && current.value) {
+        if (current && (current.value || current.value === '')) {
           this.$set(this.selected, 'value', current.value)
           this.$set(this.selected, 'text', current.text)
           this.$set(this.selected, 'html', current.html)
@@ -63,11 +62,6 @@ export default {
       }
     },
     changeTo(value, text = '', html = '') {
-      // this.selected = {
-      //   value,
-      //   text,
-      //   html,
-      // }
       this.$set(this.selected, 'value', value)
       this.$set(this.selected, 'text', text)
       this.$set(this.selected, 'html', html)
@@ -81,7 +75,6 @@ export default {
 
 <template>
   <b-dropdown v-bind="$attrs">
-    {{ selected }}
     <template #button-content>
       {{ selected.text }}
       <div v-if="selected.html" v-html="selected.html"/>

@@ -196,12 +196,12 @@ export default {
         />
       </b-form-group>
 
-            <dropdown-selector size="xs" variant="danger" v-model="unit" right :options="[
-                { value: '', text: ' ' },
-                { value: 'block', text: 'Block' },
-                { value: 'flex', text: 'Flex' }]"> </dropdown-selector>
+<!--            <dropdown-selector size="xs" variant="danger" v-model="unit" right :options="[-->
+<!--                { value: '', text: ' ' },-->
+<!--                { value: 'block', text: 'Block' },-->
+<!--                { value: 'flex', text: 'Flex' }]"> </dropdown-selector>-->
 
-      <css-number v-model="test" :units="['px', 'rem', 'em', '']" ></css-number>
+      <css-number v-model="test"></css-number>
 
       css number: {{test}}
 <!--<css-number v-model="test" :units="['px','rem', 'em']" ></css-number>-->
@@ -221,12 +221,12 @@ export default {
             <!--            :formatter="unitFormatter"-->
             <!--            lazy-formatter-->
             <div class="input-xs">
-              <dropdown-selector
-                  v-model="temp.unit" class="float-right" size="xs" variant="dark" right :options="[
-                  { value: 's', text: 'px' },
-                  { value: 'em', text: 'em' },
-                  { value: 'rem', text: 'rem' }]"
-              />
+<!--              <dropdowdropn-selector-->
+<!--                  v-model="temp.unit" class="float-right" size="xs" variant="dark" right :options="[-->
+<!--                  { value: 's', text: 'px' },-->
+<!--                  { value: 'em', text: 'em' },-->
+<!--                  { value: 'rem', text: 'rem' }]"-->
+<!--              />-->
             </div>
           </div>
 
