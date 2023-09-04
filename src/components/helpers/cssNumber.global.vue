@@ -101,15 +101,15 @@ export default {
     />
 
     <template #append>
-<!--      <dropdown-selector-->
-<!--          v-model="tempUnit" class="float-right" size="xs" variant="dark" right :options="units" @input="updateValue"-->
-<!--      />-->
-
-      <b-form-select
-          v-model="tempUnit" :options="units" size="sm"
-          class="cssNumberSelector"
-          @input="updateValue"
+      <dropdown-selector
+          v-model="tempUnit" class="float-right" size="xs" variant="light" right :options="units" @input="updateValue"
       />
+
+<!--      <b-form-select-->
+<!--          v-model="tempUnit" :options="units" size="sm"-->
+<!--          class="cssNumberSelector"-->
+<!--          @input="updateValue"-->
+<!--      />-->
     </template>
   </b-input-group>
 </template>

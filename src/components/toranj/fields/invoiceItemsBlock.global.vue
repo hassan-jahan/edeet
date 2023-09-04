@@ -135,7 +135,7 @@ export default {
   },
   mounted() {
     // esential for object values
-    console.log('this.value mounted item', this.value, this.block)
+    // console.log('this.value mounted item', this.value, this.block)
     if ((typeof this.value === 'undefined' || this.value == '' || this.$helper.isEmptyObject(this.value)) && this.block.slug) {
       this.value = {
         items: [

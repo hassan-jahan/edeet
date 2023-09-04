@@ -200,6 +200,8 @@ export default {
 <!--                { value: '', text: ' ' },-->
 <!--                { value: 'block', text: 'Block' },-->
 <!--                { value: 'flex', text: 'Flex' }]"> </dropdown-selector>-->
+      <four-css-number :value="value" :names="['paddingTop', 'paddingLeft', 'paddingBottom', 'paddingRight']" label="Padding"></four-css-number>
+
 
       <css-number v-model="test"></css-number>
 
@@ -212,10 +214,9 @@ export default {
           <div class="d-flex justify-content-between">
             <small class="text-muted input-xs small">Margin</small>
 
-            <b-form-input
-                v-model="temp.marginTop" type="number" size="sm"
+            <css-number
+                v-model="value.marginTop"
                 placeholder="Top" class="input-xs"
-
             />
 <!--            @input="(val) => addUnit(val, 'marginTop', 'unit')"-->
             <!--            :formatter="unitFormatter"-->
@@ -307,9 +308,7 @@ export default {
 </template>
 
 <style>
-.input-xs {
-  width: 50px;
-}
+
 
 /*.css-builder .margin-box:hover .padding-box{*/
 /*  opacity: .7;*/
