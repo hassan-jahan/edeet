@@ -18,6 +18,9 @@ export default {
     size: {
       type: String,
     },
+    placeholder: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -93,11 +96,13 @@ export default {
     <b-form-input
         v-if="tempUnit"
         v-model="tempValue" type="number" size="sm" step="any" @input="updateValue"
+        :placeholder="placeholder"
     />
 
     <b-form-input
         v-else
         v-model="customValue" type="text" size="sm" @input="updateValue"
+        :placeholder="placeholder"
     />
 
     <template #append>

@@ -57,6 +57,23 @@ export default {
     return {
       footerHover: false,
       shadowStyles: shadowStyles,
+      advancedSettingsForm: {
+        component: 'form',
+        children: [
+          // {
+          //     'slug': 'transparent',
+          //     'label': 'Transparent',
+          //     'component': 'checkbox',
+          //     // 'required': true,
+          //     'description': 'Transparent',
+          // },
+          {
+            slug: '_style',
+            label: 'Style',
+            component: 'style',
+          },
+            ]
+      },
     }
   },
   created() {
@@ -88,7 +105,7 @@ export default {
     <!--        all options edit here -->
     <template v-if="options.edit">
 <!--      <shadow-root :adopted-styles="shadowStyles">-->
-<!--&lt;!&ndash;        Below is essential all section and hover styles should be rewritten  all scoped css should be separated or somehow we need to create a style by vite and use it only and &ndash;&gt;-->
+<!--&lt;!&ndash;         all section and hover styles should be rewritten (..section-wrrapper ) all scoped css should be separated or somehow we need to create a style by vite and use it only and &ndash;&gt;-->
 <!--        <div :class="{ 'hover-section': hover, 'border22': hover, 'toranj-section': true }">-->
           <div class="dsht dsht-controls">
 
@@ -287,9 +304,7 @@ export default {
                 body-class="dsht p-2"
             >
 <!--              <shadow-root :adopted-styles="shadowStyles">-->
-                <div title="CSS ID" class="text-mute small text-right">
-                  #{{ block.id }}
-                </div>
+
 
                 <!--                                    <p class=""> -->
                 <!--                                        -->
@@ -303,10 +318,26 @@ export default {
 
                 <!--                /> -->
                 <form @submit.prevent="">
-                  <formFields
-                      v-if="settingsForm" :model="block" :block="settingsForm" :parent="[]" :index="0"
-                      :options="{ edit: false }"
-                  />
+                  <b-tabs no-body justified sma22ll content-class="mt-0"  small  >
+                    <b-tab v-if="settingsForm" title="General" active>
+
+                      <formFields
+                          :model="block" :block="settingsForm" :parent="[]" :index="0"
+                          :options="{ edit: false }"
+                      />
+                    </b-tab>
+
+                    <b-tab title="Advanced">
+                      <div title="CSS ID" class="text-mute small text-right mt-2">
+                        #{{ block.id }}
+                      </div>
+
+                      <formFields
+                          :model="block" :block="advancedSettingsForm" :parent="[]" :index="0"
+                          :options="{ edit: false }"
+                      />
+                    </b-tab>
+                  </b-tabs>
                 </form>
 <!--              </shadow-root>-->
             </b-sidebar>

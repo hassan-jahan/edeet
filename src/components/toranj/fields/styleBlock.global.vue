@@ -31,10 +31,59 @@ export default {
 
   data() {
     return {
+      directionBlock: {
+        slug: 'direction',
+        label: '',
+        component: 'select',
+        size: 'sm',
+        values: [{
+          // text: 'left',
+          value: '',
+          html: '<div class="close">-</div>',
+        }, {
+          value: 'ltr',
+          html: '<span class="iconify" data-icon="bx:bx-left-arrow-alt" data-inline="false"></span>'
+        }, {
+          value: 'rtl',
+          html: '<span class="iconify" data-icon="bx:bx-right-arrow-alt" data-inline="false"></span>'
+        }
+        ]
+      },
+      alignBlock: {
+        slug: 'textAlign',
+        label: '',
+        component: 'select',
+        size: 'sm',
+        values: [{
+          // text: 'left',
+          value: '',
+          html: '<div class="close">-</div>',
+        }, {
+          // text: 'left',
+          value: 'left',
+          html: '<span class="iconify" data-icon="ant-design:align-left-outlined" data-inline="false"></span>',
+        }, {
+          text: 'center',
+          value: 'center',
+          html: '<span class="iconify" data-icon="ant-design:align-center-outlined" data-inline="false" />',
+
+        }, {
+          // text: 'right',
+          value: 'right',
+          html: '<span class="iconify" data-icon="ant-design:align-right-outlined" data-inline="false" />',
+
+        }],
+        // 'default': 'info', //todo: foreach map for each block and its settings field
+        description: '',
+        // 'buttons': true,
+        // 'size': 'sm',
+        // 'stacked': true,
+      },
       settingsForm: {},
       temp: {},
       unit: 'px',
       test: '',
+
     }
   },
   computed: {
@@ -48,16 +97,8 @@ export default {
     },
     // let styles = css({}
   },
-  // {
-  // edit: {
-  //     type: Object,
-  //     // default: {show:false}
-  // },
-  // current: {
-  //     type: String,
-  //     required: true
-  // }
-  // },
+  watch: {},
+
   mounted() {
 
   },
@@ -66,106 +107,19 @@ export default {
     // console.log('vaaalue', this.value)
     if ((typeof this.value === 'undefined' || this.value == '' || this.$helper.isEmptyObject(this.value)) && this.block.slug) {
       this.value = {}
-      // this.$set(this.value, 'md', { 'paddingTop': 23 })
     }
-    // console.log('vaaalue2', this.value)
-    const settings = [
 
-      // {\
-      //     'slug': 'default',
-      //     'label': 'Default Value',
-      //     'component': 'input-text',
-      //     'type': 'text',
-      //     'description': 'Default value for empty fields',
-      // },
-
-      {
-        slug: 'max',
-        label: 'Max Stars',
-        component: 'input-text',
-        type: 'number',
-        min: 3,
-        max: 20,
-        description: '',
-        // 'showIf': []
-      },
-
-      {
-        slug: 'color',
-        label: 'Color',
-        component: 'color',
-        gradient: false,
-        transparent: false,
-        preset: 'basic',
-        options: ['#ff8800', '#1c5cc6', 'red', 'green'],
-        // 'required': true,
-        description: '',
-      },
-      {
-        slug: 'showValue',
-        label: 'Show Value',
-        component: 'checkbox',
-        default: false,
-        description: '',
-      },
-
-    ]
-    this.settingsForm = {
-      component: 'form',
-      children: [...this.commonSettings.children, ...settings],
-    } // change in future for better performance            //
+    // this.settingsForm = {
+    //   component: 'form',
+    //   children: [...this.commonSettings.children, ...settings],
+    // } // change in future for better performance            //
     // this.commonSettings.children.push()
-  },
-  watch: {
-    // temp: {
-    //   deep: true,
-    //   handler(newVal) {
-    //     if (!newVal.unit)
-    //       return
-    //
-    //     newVal.map((key, val) => {
-    //       if (key !== 'unit') {
-    //         return this.addUnit(val, key, newVal.unit)
-    //       }
-    //     })
-    //   }
-    // },
   },
   methods: {
     change() {
       if (!this.isDirty) {
         this.isDirty = true
       }
-    },
-
-    addUnit(value, modelValue, unitVar) {
-      // if (typeof value === 'undefined' || value === '') {
-      //   return
-      // }
-      //
-
-      const unit = this[unitVar] || 'px'
-      let output
-      if (isNaN(value) || value == '' || this[unitVar] === 'custom') {
-        output = value
-      } else {
-        output = value.toString() + unit
-      }
-
-      this.$set(this.value, modelValue, output)
-    },
-
-    unitFormatter(value) {
-      if (typeof value === 'undefined' || value === '') {
-        return
-      }
-
-      if (isNaN(value) || this.unit === 'custom') {
-        return value
-      }
-
-      const unit = this.unit || 'px'
-      return value.toString() + unit
     },
   },
 }
@@ -196,119 +150,149 @@ export default {
         />
       </b-form-group>
 
-<!--            <dropdown-selector size="xs" variant="danger" v-model="unit" right :options="[-->
-<!--                { value: '', text: ' ' },-->
-<!--                { value: 'block', text: 'Block' },-->
-<!--                { value: 'flex', text: 'Flex' }]"> </dropdown-selector>-->
-      <four-css-number :value="value" :names="['paddingTop', 'paddingLeft', 'paddingBottom', 'paddingRight']" label="Padding"></four-css-number>
-
-
-      <css-number v-model="test"></css-number>
-
-      css number: {{test}}
-<!--<css-number v-model="test" :units="['px','rem', 'em']" ></css-number>-->
+      <!--            <dropdown-selector size="xs" variant="danger" v-model="unit" right :options="[ -->
+      <!--                { value: '', text: ' ' }, -->
+      <!--                { value: 'block', text: 'Block' }, -->
+      <!--                { value: 'flex', text: 'Flex' }]"> </dropdown-selector> -->
       <b-form-group
-          label="Space"
+          :label-for="`${block.id}-margin`"
+          label="Margin"
       >
-        <div class="margin-box" style="width: 260px; ">
-          <div class="d-flex justify-content-between">
-            <small class="text-muted input-xs small">Margin</small>
-
-            <css-number
-                v-model="value.marginTop"
-                placeholder="Top" class="input-xs"
-            />
-<!--            @input="(val) => addUnit(val, 'marginTop', 'unit')"-->
-            <!--            :formatter="unitFormatter"-->
-            <!--            lazy-formatter-->
-            <div class="input-xs">
-<!--              <dropdowdropn-selector-->
-<!--                  v-model="temp.unit" class="float-right" size="xs" variant="dark" right :options="[-->
-<!--                  { value: 's', text: 'px' },-->
-<!--                  { value: 'em', text: 'em' },-->
-<!--                  { value: 'rem', text: 'rem' }]"-->
-<!--              />-->
-            </div>
-          </div>
-
-          <div class="d-flex">
-            <b-form-input
-                v-model="value.marginLeft" type="text" size="sm"
-                placeholder="Left" class="input-xs align-self-center"
-            />
-
-            <!-- Padding -->
-            <div
-                class="padding-box align-self-center"
-                style="border: 3px solid #bbb;width:150px;border-radius: 10px;padding: 5px; margin:5px; "
-            >
-              <div class="d-flex justify-content-between">
-                <div class="text-muted input-xs bg-grey m22t-1" style="font-size:.6rem">
-                  Padding
-                </div>
-                <b-form-input
-                    v-model="value.paddingTop" type="text" size="sm"
-                    placeholder="Top" class="input-xs"
-                />
-                <div class="input-xs"/>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <b-form-input
-                    v-model="value.paddingLeft" type="text" size="sm"
-                    placeholder="Left" class="input-xs"
-                />
-                <b-form-input
-                    v-model="value.paddingRight" type="text" size="sm"
-                    placeholder="Right" class="input-xs"
-                />
-              </div>
-
-              <div class="d-flex justify-content-center">
-                <b-form-input
-                    v-model="value.paddingBottom" type="text" size="sm"
-                    placeholder="Bottom" class="input-xs"
-                />
-              </div>
-            </div>
-
-            <b-form-input
-                v-model="value.marginRight" type="text" size="sm"
-                placeholder="Right" class="input-xs align-self-center"
-            />
-          </div>
-
-          <div class="d-flex justify-content-center">
-            <b-form-input
-                v-model="value.marginBottom" type="text" size="sm"
-                placeholder="Bottom" class="input-xs"
-            />
-          </div>
-        </div>
+        <four-css-number
+            :value="value" :names="['marginTop', 'marginLeft', 'marginBottom', 'marginRight']"
+            label="Margin"
+        />
       </b-form-group>
-    </div>
 
-    <b-form-group
-        label="Display"
-    >
-      <b-form-select
-          v-model="value.display" :options="[
+      <b-form-group
+          :label-for="`${block.id}-padding`"
+          label="Padding"
+      >
+        <four-css-number
+            :value="value" :names="['paddingTop', 'paddingLeft', 'paddingBottom', 'paddingRight']"
+            label="Padding"
+        />
+      </b-form-group>
+
+
+      <b-form-group
+          label="Display"
+      >
+        <b-form-select
+            v-model="value.display" :options="[
           { value: '', text: '' },
           { value: 'block', text: 'Block' },
           { value: 'flex', text: 'Flex' },
           { value: 'inline-block', text: 'Inline Block' },
           { value: 'inline', text: 'Inline' },
           { value: 'none', text: 'None' },
-        ]" size="sm" class="mt-3"
-      />
-    </b-form-group>
+        ]" size="sm" class="mt-0"
+        />
+      </b-form-group>
 
+      <b-form-group
+          :label-for="`${block.id}-text`"
+          label="Text"
+      >
+        <div class="d-flex justify-content-between">
+          <b-form-select
+              v-model="value.fontFamily"
+              class="mr-2" :options="[
+            // { value: '', text: '-- Font Family --' },
+            { value: 'Arial, Helvetica, sans-serif', text: 'Arial' },
+            { value: 'Courier New,Courier, monospace', text: 'Courier New' },
+            { value: 'Times New Roman, Times, serif', text: 'Times New Roman' },
+            { value: 'Verdana, Tahoma, sans-serif', text: 'Verdana' },
+          ]" size="sm"
+          >
+            <template #first>
+              <b-form-select-option :value="undefined" disabled>
+                - Font Family -
+              </b-form-select-option>
+            </template>
+          </b-form-select>
+
+          <b-form-select
+              v-model="value.fontWeight"
+              style="max-width: 100px"
+              class="ml-2" :options="[
+            // { value: '', text: '-- Font Family --' },
+            { text: 'Thin (100)', value: '100' },
+            { text: 'Extra Light (200)', value: '200' },
+            { text: 'Light (300)', value: '300' },
+            { text: 'Normal (400)', value: '400' },
+            { text: 'Medium (500)', value: '500' },
+            { text: 'Semibold (600)', value: '600' },
+            { text: 'Bold (700)', value: '700' },
+            { text: 'Extra Bold (800)', value: '800' },
+            { text: 'Black (900)', value: '900' },
+
+          ]" size="sm"
+          >
+            <template #first>
+              <b-form-select-option :value="undefined" disabled>
+                - Weight -
+              </b-form-select-option>
+            </template>
+          </b-form-select>
+        </div>
+
+        <!--      background image color multiple free text code location
+
+        height widtgh  and others
+        borders
+        maybe shadow?
+        responsiveness?
+        -->
+        <div class="d-flex">
+          <css-number
+              v-model="value.fontSize"
+              class="input-xs"
+              placeholder="Size"
+              style="min-width: 90px;"
+          />
+
+          <color-block
+              :model="value" :block="{
+          slug: 'color',
+          component: 'color',
+          gradient: false,
+          transparent: false,
+          preset: 'basic',
+          label: '',
+          description: '',
+          options: '',
+        }" :parent="[]" :index="0" :options="{ edit: false }"
+              :scope="{}"
+          />
+        </div>
+      </b-form-group>
+
+      <div class="d-flex">
+        <select-block
+            :model="value"
+            :block="alignBlock" :parent="[]" :index="0" :options="{edit:false}" :scope="{}"
+            class="mx-2"
+        >
+        </select-block>
+
+
+        <select-block
+            :model="value"
+            :block="directionBlock" :parent="[]" :index="0" :options="{edit:false}" :scope="{}"
+            class="mx-2"
+        >
+        </select-block>
+      </div>
+    </div>
     <pre>{{ css }}</pre>
   </field-wrapper>
 </template>
 
 <style>
-
+.css-builder, .css-builder label, .css-builder .form-group, .css-builder legend, .css-builder .col-form-label {
+  font-size: 12px !important;
+}
 
 /*.css-builder .margin-box:hover .padding-box{*/
 /*  opacity: .7;*/

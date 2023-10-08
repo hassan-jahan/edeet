@@ -75,7 +75,7 @@ export default {
 <template>
   <div
       class="padding-box align-self-center"
-      style="border: 3px solid #bbb;width:250px;border-radius: 10px;padding: 5px; margin:5px; "
+      style="border: 1px solid #bbb;width:250px;border-radius: 10px;padding: 8px 5px; margin:5px; "
   >
     <div class="d-flex justify-content-between">
       <div class="text-muted input-xs bg-g2rey m22t-1" style="font-size:.8rem">
@@ -85,6 +85,7 @@ export default {
           :value="sendValue(0)"
           @input="handleUpdate($event, 0)"
           class="input-xs"
+          placeholder="Top"
       />
       <div class="input-xs"/>
     </div>
@@ -94,11 +95,13 @@ export default {
           :value="sendValue(1)"
           @input="handleUpdate($event, 1)"
           class="input-xs"
+          placeholder="Left"
       />
       <css-number
           :value="sendValue(3)"
           @input="handleUpdate($event, 3)"
           class="input-xs"
+          placeholder="Right"
       />
     </div>
 
@@ -107,6 +110,7 @@ export default {
           :value="sendValue(2)"
           @input="handleUpdate($event, 2)"
           class="input-xs"
+          placeholder="Bottom"
       />
       <!--      <b-form-input-->
       <!--          v-model="value.paddingBottom" type="text" size="sm"-->
