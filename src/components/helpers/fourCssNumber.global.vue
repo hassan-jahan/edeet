@@ -75,7 +75,7 @@ export default {
 <template>
   <div
       class="padding-box align-self-center"
-      style="border: 1px solid #bbb;width:250px;border-radius: 10px;padding: 8px 5px; margin:5px; "
+      style="border: 1px solid #bbb;min-width:250px;border-radius: 10px;padding: 8px 5px; margin:5px; "
   >
     <div class="d-flex justify-content-between">
       <div class="text-muted input-xs bg-g2rey m22t-1" style="font-size:.8rem">

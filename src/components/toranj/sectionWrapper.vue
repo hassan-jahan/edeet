@@ -296,12 +296,13 @@ export default {
                 size="sm"
                 backdrop
                 backdrop-variant=""
+                no-header
                 width="310px"
                 right
                 shadow
                 lazy
-                sidebar-class="p-2"
-                body-class="dsht p-2"
+                sidebar-class="p-0"
+                body-class="dsht p-0"
             >
 <!--              <shadow-root :adopted-styles="shadowStyles">-->
 
@@ -318,7 +319,16 @@ export default {
 
                 <!--                /> -->
                 <form @submit.prevent="">
-                  <b-tabs no-body justified sma22ll content-class="mt-0"  small  >
+                  <b-tabs no-body fill sma22ll content-class="mt-0 pb-3"  small pills card active-nav-item-class="bg-secondary small" nav-class="p-0 "   >
+                    <!-- New Tab Button (Using tabs-end slot) -->
+                    <template #tabs-start>
+                      <b-nav-item link-classes="px-0 text-secondary" role="presentation" v-b-toggle="`settings-${block.id}`" href="#">
+                        <span class="iconify big" data-icon="bx:bx-left-arrow-alt" data-inline="false"/>
+
+                      </b-nav-item>
+
+                    </template>
+
                     <b-tab v-if="settingsForm" title="General" active>
 
                       <formFields
@@ -327,7 +337,7 @@ export default {
                       />
                     </b-tab>
 
-                    <b-tab title="Advanced">
+                    <b-tab title="Advanced" lazy>
                       <div title="CSS ID" class="text-mute small text-right mt-2">
                         #{{ block.id }}
                       </div>
