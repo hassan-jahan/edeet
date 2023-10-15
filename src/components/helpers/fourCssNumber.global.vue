@@ -122,6 +122,6 @@ export default {
 
 <style >
 .input-xs {
-  width: 77px;
+  width: 92px;
 }
 </style>

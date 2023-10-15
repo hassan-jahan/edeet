@@ -1,7 +1,7 @@
 <script>
 // import dedent from 'dedent'
 // import {codemirror} from 'vue-codemirror'
-import codemirror from 'vue-codemirror/src/codemirror'
+import codemirror from 'vue-codemirror/src/codemirror.vue'
 
 // const codemirror from import('vue-codemirror/src/codemirror')
 // base style

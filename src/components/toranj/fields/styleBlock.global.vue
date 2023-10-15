@@ -31,6 +31,7 @@ export default {
 
   data() {
     return {
+      theClassList: '',
       directionBlock: {
         slug: 'direction',
         label: '',
@@ -46,8 +47,7 @@ export default {
         }, {
           value: 'rtl',
           html: '<span class="iconify" data-icon="bx:bx-right-arrow-alt" data-inline="false"></span>'
-        }
-        ]
+        }]
       },
       alignBlock: {
         slug: 'textAlign',
@@ -140,10 +140,11 @@ export default {
           :label-for="`${block.id}-classes`"
           label="Classes"
       >
+<!--        doesn't work with value.classlist ???? -->
         <b-form-tags
             :id="`${block.id}-classes`"
-            v-model="value.classes"
-            placeholder="Enter new tags separated by space"
+            v-model="theClassList"
+            placeholder="Enter new class separated by space"
             remove-on-delete
             separator=" "
             size="sm"
@@ -252,8 +253,11 @@ export default {
               style="min-width: 90px;"
           />
 
-          <color-block
-              :model="value" :block="{
+
+        </div>
+
+        <color-block
+            :model="value" :block="{
           slug: 'color',
           component: 'color',
           gradient: false,
@@ -263,9 +267,8 @@ export default {
           description: '',
           options: '',
         }" :parent="[]" :index="0" :options="{ edit: false }"
-              :scope="{}"
-          />
-        </div>
+            :scope="{}"
+        />
       </b-form-group>
 
       <div class="d-flex">
@@ -294,6 +297,10 @@ export default {
   font-size: 12px !important;
 }
 
+.css-builder input[type=number]{
+  font-size: 13px !important;
+
+}
 /*.css-builder .margin-box:hover .padding-box{*/
 /*  opacity: .7;*/
 /*}*/

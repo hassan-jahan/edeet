@@ -1,5 +1,5 @@
 <script>
-import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect/src/Multiselect.vue'
 import 'vue-multiselect/dist/vue-multiselect.min.css'
 
 export default {

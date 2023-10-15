@@ -1,7 +1,11 @@
 <script>
 import fieldMixin from '../fieldMixin'
 
-const iCodeMirror = () => import('@/components/helpers/iCodeMirror')
+// const iCodeMirror = () => import('@/components/helpers/iCodeMirror')
+// const iCodeMirror = () => import('./components/helpers/iCodeMirror')
+const iCodeMirror = () => import('./../../helpers/iCodeMirror.vue')
+
+
 // import blockMixin from '../toranj/blockMixin'
 
 export default {

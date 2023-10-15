@@ -4,8 +4,10 @@
 // import blockMixin from '../toranj/blockMixin'
 // import {RuntimeTemplateCompiler} from "vue-runtime-template-compiler"
 
-const iCodeMirror = () => import('@/components/helpers/iCodeMirror')
+const iCodeMirror = () => import('./../../helpers/iCodeMirror.vue')
+// const iCodeMirror = () => import('@/components/helpers/iCodeMirror')
 // import iCodeMirror from "@/components/helpers/iCodeMirror";
+// import iCodeMirror from "./../../helpers/iCodeMirror.vue";
 // https://github.com/jonwatkins/vue-runtime-template-compiler todo: NOT NEED VUE COMPILE VERSION alias remove from nuxt config VERY BIG DECREASE SIZE WITH REMOVVING BUNDLEED VUE
 
 export default {
